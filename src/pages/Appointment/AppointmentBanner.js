@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import chair from "../../../src/assets/images/chair.png";
 import bg from "../../../src/assets/images/bg.png";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
-import { format } from "date-fns";
 
-const AppointmentBanner = () => {
-  const [selected, setSelected] = useState(new Date());
+const AppointmentBanner = ({ date, setDate }) => {
   return (
     <div
       style={{ background: `url(${bg})` }}
@@ -18,9 +16,16 @@ const AppointmentBanner = () => {
           className="max-w-80 md:max-w-lg rounded-lg shadow-2xl mx-auto block md:ml-12"
           alt="chairimage"
         />
-        <div>
-          <DayPicker mode="single" selected={selected} onSelect={setSelected} />
-          ;<p>You picked {format(selected, "PP")}.</p>
+        <div className="mt-10">
+          <DayPicker
+            styles={{
+              caption: { color: "#19D3AE" },
+            }}
+            mode="single"
+            selected={date}
+            onSelect={setDate}
+          />
+          ;
         </div>
       </div>
     </div>
