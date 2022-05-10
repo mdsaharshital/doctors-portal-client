@@ -31,7 +31,7 @@ const Testimonial = () => {
   ];
   return (
     <div
-      className="my-20"
+      className="my-20 px-12"
       style={{
         background: `url(${quote})`,
         backgroundRepeat: "no-repeat",

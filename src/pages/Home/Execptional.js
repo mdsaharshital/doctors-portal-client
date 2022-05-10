@@ -4,7 +4,7 @@ import PrimaryBtn from "../../components/PrimaryBtn";
 
 const Execptional = () => {
   return (
-    <div className="hero min-h-screen md:px-24">
+    <div className="px-12 hero min-h-screen md:px-24">
       <div className="hero-content flex-col lg:flex-row">
         <img
           src={baby}
