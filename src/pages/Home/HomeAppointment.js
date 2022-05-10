@@ -14,7 +14,9 @@ const HomeAppointment = () => {
       </div>
       <div className="flex-1 p-6">
         <h1 className="my-2 font-bold text-primary uppercase">Appointment</h1>
-        <h1 className="my-4 text-2xl text-white">Make an appointment Today</h1>
+        <h1 className="my-4 text-4xl font-bold text-white">
+          Make an appointment Today
+        </h1>
         <p className="my-2 text-white">
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout. The point of

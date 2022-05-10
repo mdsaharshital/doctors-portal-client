@@ -4,6 +4,7 @@ import Execptional from "./Execptional";
 import HomeAppointment from "./HomeAppointment";
 import Info from "./Info";
 import OurServices from "./OurServices";
+import Testimonial from "./Testimonial";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <OurServices />
       <Execptional />
       <HomeAppointment />
+      <Testimonial />
     </div>
   );
 };
