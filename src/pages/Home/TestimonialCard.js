@@ -1,15 +1,15 @@
 import React from "react";
 
-const TestimonialCard = ({ info }) => {
-  const { desc, name, img, location } = info;
+const TestimonialCard = ({ review }) => {
+  const { desc, name, img, location } = review;
   return (
-    <div className="card w-80 bg-base-100 shadow-xl py-5">
+    <div className="card w-80 bg-base-100 shadow-xl py-5 mx-auto">
       <div className="card-body">
         <p>{desc}</p>
       </div>
       <div className="flex items-center ">
-        <div class="avatar px-10 ">
-          <div class="w-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 ">
+        <div className="avatar px-10 ">
+          <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 ">
             <img src={img} alt="person" />
           </div>
         </div>

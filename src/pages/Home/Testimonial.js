@@ -6,7 +6,7 @@ import quote from "../../assets/icons/quote.svg";
 import TestimonialCard from "./TestimonialCard";
 
 const Testimonial = () => {
-  const infos = [
+  const reviews = [
     {
       id: 1,
       img: person1,
@@ -42,8 +42,8 @@ const Testimonial = () => {
       <h1 className="my-2 font-bold text-primary uppercase">Testimonial</h1>
       <h1 className="my-4 text-4xl font-bold">What our Patients says</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-32">
-        {infos.map((info) => (
-          <TestimonialCard key={info.id} info={info} />
+        {reviews.map((review) => (
+          <TestimonialCard key={review.id} review={review} />
         ))}
       </div>
     </div>
