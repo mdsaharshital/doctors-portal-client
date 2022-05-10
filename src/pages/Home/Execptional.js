@@ -4,11 +4,11 @@ import PrimaryBtn from "../../components/PrimaryBtn";
 
 const Execptional = () => {
   return (
-    <div className="px-12 hero min-h-screen md:px-24">
+    <div className="container mx-auto hero min-h-screen md:px-24">
       <div className="hero-content flex-col lg:flex-row">
         <img
           src={baby}
-          className="max-w-sm rounded-lg shadow-2xl"
+          className="max-w-80 md:max-w-sm rounded-lg shadow-2xl mx-auto block"
           alt="expectional"
         />
         <div className="md:pl-16">
