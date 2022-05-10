@@ -11,7 +11,7 @@ const Execptional = () => {
           className="max-w-sm rounded-lg shadow-2xl"
           alt="expectional"
         />
-        <div className="">
+        <div className="md:pl-16">
           <h1 className="text-5xl font-bold">
             Exceptional Dental Care, on Your Terms
           </h1>
