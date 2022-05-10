@@ -1,5 +1,6 @@
 import React from "react";
 import baby from "../../assets/images/treatment.png";
+import PrimaryBtn from "../../components/PrimaryBtn";
 
 const Execptional = () => {
   return (
@@ -22,7 +23,7 @@ const Execptional = () => {
             here', making it look like readable English. Many desktop publishing
             packages and web page.
           </p>
-          <button className="btn btn-primary">Get Started</button>
+          <PrimaryBtn>Book Now</PrimaryBtn>
         </div>
       </div>
     </div>

@@ -20,7 +20,7 @@ const Banner = () => {
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </p>
-          <PrimaryBtn />
+          <PrimaryBtn>Get started</PrimaryBtn>
         </div>
       </div>
     </div>
