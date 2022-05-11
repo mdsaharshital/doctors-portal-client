@@ -3,36 +3,44 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import SocialSignIn from "../Shared/SocialSignIn";
 import auth from "../../firebase.init";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import Loading from "../Shared/Loading";
 
 const Signup = () => {
   const navigate = useNavigate();
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
-    createUserWithEmailAndPassword(data.email, data.password);
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
+    navigate("/appointment");
   };
   // signin related works
   if (user) {
-    // navigate("/");
     console.log(user);
   }
   let signInError;
-  if (error) {
+  if (error || updateError) {
     signInError = (
       <p className="text-red-500">
-        <span>{error?.message}</span>
+        <span>
+          {error?.message}
+          {updateError?.message}
+        </span>
       </p>
     );
   }
-  if (loading) return <Loading />;
+  if (loading || updating) return <Loading />;
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="card  w-96 lg:w-96 bg-base-100 shadow-xl">
