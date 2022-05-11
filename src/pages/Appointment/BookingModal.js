@@ -4,7 +4,7 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
   const { _id, name, slots } = treatment;
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = {
+    const myBokkings = {
       _id,
       treatmentName: name,
       slot: e.target.slot.value,
@@ -17,7 +17,7 @@ const BookingModal = ({ treatment, date, setTreatment }) => {
     // const name = e.target.name.value;
     // const email = e.target.email.value;
     // const number = e.target.number.value;
-    console.log(data);
+    console.log(myBokkings);
     setTreatment(null);
   };
   return (
