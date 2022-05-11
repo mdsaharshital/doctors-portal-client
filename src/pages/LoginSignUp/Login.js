@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import SocialSignIn from "../Shared/SocialSignIn";
 import auth from "../../firebase.init";
@@ -8,6 +8,8 @@ import Loading from "../Shared/Loading";
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location?.state?.from?.pathname || "/";
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const {
@@ -21,7 +23,7 @@ const Login = () => {
   };
   // signin related works
   if (user) {
-    navigate("/");
+    navigate(from, { replace: true });
   }
   let signInError;
   if (error) {
