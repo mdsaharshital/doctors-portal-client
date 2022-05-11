@@ -1,54 +1,142 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import SocialSignIn from "../Shared/SocialSignIn";
+import auth from "../../firebase.init";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import Loading from "../Shared/Loading";
 
 const Signup = () => {
-  const handleSignUp = (e) => {
-    e.preventDefault();
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    console.log(name, email, password);
-    e.target.reset();
+  const navigate = useNavigate();
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+    createUserWithEmailAndPassword(data.email, data.password);
   };
-
+  // signin related works
+  if (user) {
+    // navigate("/");
+    console.log(user);
+  }
+  let signInError;
+  if (error) {
+    signInError = (
+      <p className="text-red-500">
+        <span>{error?.message}</span>
+      </p>
+    );
+  }
+  if (loading) return <Loading />;
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="card  w-80 lg:w-96 bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title justify-center">Signup!</h2>
-          <form
-            onSubmit={handleSignUp}
-            className="mt-10 grid grid-cols-1 justify-items-center gap-3"
-          >
+      <div className="card  w-96 lg:w-96 bg-base-100 shadow-xl">
+        <div className="card-body ">
+          <h2 className="card-title justify-center">Sign Up!</h2>
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              <span className="label-text">Name</span>
+            </label>
             <input
+              {...register("name", {
+                required: {
+                  value: true,
+                  message: "Name is Required",
+                },
+              })}
               type="text"
-              name="name"
-              placeholder="Name"
+              placeholder="Your name"
               className="input input-bordered w-full max-w-xs"
             />
+            <label className="label">
+              {errors.name?.type === "required" && (
+                <span className="label-text-alt text-red-500">
+                  {errors?.name?.message}
+                </span>
+              )}
+            </label>
+          </div>
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
             <input
+              {...register("email", {
+                required: {
+                  value: true,
+                  message: "Email is Required",
+                },
+                pattern: {
+                  value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                  message: "Provide a valid email",
+                },
+              })}
               type="email"
-              name="email"
-              placeholder="Email"
+              placeholder="Your email"
               className="input input-bordered w-full max-w-xs"
             />
+            <label className="label">
+              {errors.email?.type === "required" && (
+                <span className="label-text-alt text-red-500">
+                  {errors.email.message}
+                </span>
+              )}
+              {errors.email?.type === "pattern" && (
+                <span className="label-text-alt text-red-500">
+                  {errors.email.message}
+                </span>
+              )}
+            </label>
+          </div>
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              <span className="label-text">Password</span>
+            </label>
             <input
+              {...register("password", {
+                required: {
+                  value: true,
+                  message: "Password is Required",
+                },
+                minLength: {
+                  value: 6,
+                  message: "Password must be atleast 6 character or longer",
+                },
+              })}
               type="password"
-              name="password"
-              placeholder="Password"
+              placeholder="Your password"
               className="input input-bordered w-full max-w-xs"
             />
+            <label className="label">
+              {errors.password?.type === "required" && (
+                <span className="label-text-alt text-red-500">
+                  {errors.password.message}
+                </span>
+              )}
+              {errors.password?.type === "minLength" && (
+                <span className="label-text-alt text-red-500">
+                  {errors.password.message}
+                </span>
+              )}
+            </label>
+            {signInError}
+          </div>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <input
               type="submit"
-              value={"Submit"}
-              className="input input-bordered w-full max-w-xs bg-gradient-to-r from-secondary to-primary text-white border-none cursor-pointer"
+              className="w-full max-w-xs btn"
+              value="Login"
             />
           </form>
           <p className="text-center">
             Already have an account?{" "}
             <Link className="text-blue-400" to="/login">
-              Login now
+              Log in now
             </Link>
           </p>
           <SocialSignIn />
