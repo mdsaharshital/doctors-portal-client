@@ -20,15 +20,14 @@ const Signup = () => {
     handleSubmit,
   } = useForm();
   const onSubmit = async (data) => {
-    console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
     navigate("/appointment");
   };
   // signin related works
-  if (user) {
-    console.log(user);
-  }
+  // if (user) {
+  //   console.log(user);
+  // }
   let signInError;
   if (error || updateError) {
     signInError = (
