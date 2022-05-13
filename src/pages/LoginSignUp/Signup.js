@@ -5,15 +5,18 @@ import SocialSignIn from "../Shared/SocialSignIn";
 import auth from "../../firebase.init";
 import {
   useCreateUserWithEmailAndPassword,
+  useSendEmailVerification,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import Loading from "../Shared/Loading";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const [createUserWithEmailAndPassword, user, loading, error] =
+  const [createUserWithEmailAndPassword, , loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const [sendEmailVerification] = useSendEmailVerification(auth);
   const {
     register,
     formState: { errors },
@@ -22,12 +25,10 @@ const Signup = () => {
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
+    await sendEmailVerification();
+    toast.success("Email verfication sent");
     navigate("/appointment");
   };
-  // signin related works
-  // if (user) {
-  //   console.log(user);
-  // }
   let signInError;
   if (error || updateError) {
     signInError = (
@@ -137,7 +138,7 @@ const Signup = () => {
             <input
               type="submit"
               className="w-full max-w-xs btn"
-              value="Login"
+              value="Signup"
             />
           </form>
           <p className="text-center">

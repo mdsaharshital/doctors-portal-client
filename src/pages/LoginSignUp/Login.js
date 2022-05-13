@@ -1,17 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import SocialSignIn from "../Shared/SocialSignIn";
 import auth from "../../firebase.init";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSignInWithEmailAndPassword,
+  useSendPasswordResetEmail,
+} from "react-firebase-hooks/auth";
+import { toast } from "react-toastify";
 import Loading from "../Shared/Loading";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   let from = location?.state?.from?.pathname || "/";
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
   const {
     register,
     formState: { errors },
@@ -20,6 +26,7 @@ const Login = () => {
   const onSubmit = (data) => {
     signInWithEmailAndPassword(data.email, data.password);
   };
+
   // signin related works
   useEffect(() => {
     if (user) {
@@ -35,7 +42,7 @@ const Login = () => {
       </p>
     );
   }
-  if (loading) return <Loading />;
+  if (loading || sending) return <Loading />;
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="card  w-96 lg:w-96 bg-base-100 shadow-xl">
@@ -56,6 +63,7 @@ const Login = () => {
                   message: "Provide a valid email",
                 },
               })}
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
               placeholder="Your email"
               className="input input-bordered w-full max-w-xs"
@@ -118,6 +126,18 @@ const Login = () => {
             <Link className="text-blue-400" to="/signup">
               Sign up now
             </Link>
+          </p>
+          <p className="text-center">
+            Forgot password?{" "}
+            <span
+              onClick={async () => {
+                await sendPasswordResetEmail(email);
+                toast.success("Email send to forget password");
+              }}
+              className="text-red-400 cursor-pointer"
+            >
+              Click here
+            </span>
           </p>
           <SocialSignIn />
         </div>
