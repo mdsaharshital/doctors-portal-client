@@ -5,13 +5,19 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
+import { QueryClient, QueryClientProvider } from "react-query"; 
+
+// Create a client
+const queryClient = new QueryClient();
 
 ReactDOM.render(
-  <BrowserRouter>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </BrowserRouter>,
+  <QueryClientProvider client={queryClient}>
+    <BrowserRouter>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </BrowserRouter>
+  </QueryClientProvider>,
   document.getElementById("root")
 );
 
