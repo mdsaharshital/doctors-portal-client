@@ -12,7 +12,7 @@ const MyAppointment = () => {
   }, [user]);
   return (
     <div>
-      <h1>My Apoointments page: {myAppointments.length}</h1>
+      <h1>My Appointments: {myAppointments.length}</h1>
       <div className="overflow-x-auto m-5">
         <table className="table w-full">
           {/* <!-- head --> */}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import SocialSignIn from "../Shared/SocialSignIn";
@@ -10,13 +10,15 @@ import {
 } from "react-firebase-hooks/auth";
 import Loading from "../Shared/Loading";
 import { toast } from "react-toastify";
+import useToken from "../../hooks/useToken";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const [createUserWithEmailAndPassword, , loading, error] =
+  const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const [sendEmailVerification] = useSendEmailVerification(auth);
+  const [token] = useToken(user?.user);
   const {
     register,
     formState: { errors },
@@ -27,8 +29,14 @@ const Signup = () => {
     await updateProfile({ displayName: data.name });
     await sendEmailVerification();
     toast.success("Email verfication sent");
-    navigate("/appointment");
   };
+  // signin related works
+  useEffect(() => {
+    if (token) {
+      navigate("/appointment");
+    }
+  }, [token, navigate]);
+
   let signInError;
   if (error || updateError) {
     signInError = (
