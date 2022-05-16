@@ -20,7 +20,6 @@ const useToken = (user) => {
           setToken(data.token);
         });
     }
-    console.log(user);
   }, [user]);
   return [token];
 };
