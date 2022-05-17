@@ -4,7 +4,12 @@ import { toast } from "react-toastify";
 import Loading from "../Shared/Loading";
 
 const AllUsers = () => {
-  const { data, isLoading, refetch } = useQuery("user", () =>
+  // data from backend was doing some problems so i wrap in a object to make it cleaner
+  const {
+    data: users,
+    isLoading,
+    refetch,
+  } = useQuery("user", () =>
     fetch("http://localhost:5000/users", {
       method: "GET",
       headers: {
@@ -12,6 +17,7 @@ const AllUsers = () => {
       },
     }).then((res) => res.json())
   );
+  console.log(users);
   const handleMakeAdmin = (email) => {
     fetch(`http://localhost:5000/user/admin/${email}`, {
       method: "PUT",
@@ -27,17 +33,19 @@ const AllUsers = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.acknowledged) {
           toast.success("Added as admin");
           refetch();
         }
       });
   };
-  if (isLoading) return <Loading />;
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div>
-      <h1>All users: {data.length}</h1>
+      <h1>All users: {users?.data.length}</h1>
       <div className="overflow-x-auto m-5">
         <table className="table w-full">
           {/* <!-- head --> */}
@@ -50,7 +58,7 @@ const AllUsers = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((a, index) => (
+            {users?.data.map((a, index) => (
               <tr key={a._id}>
                 <th>{index + 1}</th>
                 <td>{a.email}</td>
