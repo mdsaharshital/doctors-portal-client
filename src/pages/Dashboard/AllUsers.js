@@ -10,7 +10,7 @@ const AllUsers = () => {
     isLoading,
     refetch,
   } = useQuery("user", () =>
-    fetch("http://localhost:5000/users", {
+    fetch("https://boiling-fortress-58648.herokuapp.com/users", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -19,7 +19,7 @@ const AllUsers = () => {
   );
   console.log(users);
   const handleMakeAdmin = (email) => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://boiling-fortress-58648.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

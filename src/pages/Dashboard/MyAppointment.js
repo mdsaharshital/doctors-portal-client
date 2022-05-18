@@ -10,12 +10,15 @@ const MyAppointment = () => {
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
   useEffect(() => {
-    fetch(`http://localhost:5000/booking?email=${user?.email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://boiling-fortress-58648.herokuapp.com/booking?email=${user?.email}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           signOut(auth);
@@ -58,7 +61,17 @@ const MyAppointment = () => {
                     </Link>
                   )}
                   {a.price && a.paid && (
-                    <span className=" text-success">Paid</span>
+                    <>
+                      <p>
+                        <span className=" text-success">Paid</span>
+                      </p>
+                      <small>
+                        Transaction ID:{" "}
+                        <span className="text-secondary">
+                          {a.transactionId}
+                        </span>
+                      </small>
+                    </>
                   )}
                 </td>
               </tr>

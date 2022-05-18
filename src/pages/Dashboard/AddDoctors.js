@@ -7,7 +7,9 @@ import Loading from "../Shared/Loading";
 const AddDoctors = () => {
   const imageStorageKey = "1acbd73a4a8ebea34491d15e22f67080";
   const { data: services, isLoading } = useQuery("user", () =>
-    fetch("http://localhost:5000/services").then((res) => res.json())
+    fetch("https://boiling-fortress-58648.herokuapp.com/services").then((res) =>
+      res.json()
+    )
   );
   const {
     register,
@@ -37,7 +39,7 @@ const AddDoctors = () => {
           };
           console.log(doctor);
           reset(data);
-          fetch("http://localhost:5000/doctor", {
+          fetch("https://boiling-fortress-58648.herokuapp.com/doctor", {
             method: "POST",
             headers: {
               "content-type": "application/json",

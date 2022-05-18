@@ -2,10 +2,15 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import CheckoutForm from "./CheckoutForm";
+
+const stripePromise = loadStripe(`${process.env.REACT_APP_PAYMENT_KEY}`);
 
 const Payment = () => {
   const { id } = useParams();
-  const url = `http://localhost:5000/payment/${id}`;
+  const url = `https://boiling-fortress-58648.herokuapp.com/payment/${id}`;
   const { data: appointment, isLoading } = useQuery(["booking", id], () =>
     fetch(url, {
       method: "GET",
@@ -21,20 +26,34 @@ const Payment = () => {
   return (
     <div>
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <div class="card w-80 bg-base-100 shadow-md">
-          <div class="card-body">
-            <h2 class="text-secondary font-bold">Hello, {patientName}</h2>
-            <h2 class="text-xl">Pay for {date}</h2>
+        <div className="max-w-80 md:max-w-lg rounded-lg shadow-xl mx-auto block">
+          <div className="card-body">
+            <h2 className="text-secondary font-bold">Hello, {patientName}</h2>
+            <h2 className="text-xl">Pay before {date}</h2>
             <p>
-              Your appointment on : {date} at {slot}
+              <small>
+                {" "}
+                Your appointment on : {date} at {slot} for{" "}
+                <span className="text-secondary font-bold">
+                  {treatmentName}
+                </span>
+              </small>
             </p>
             <p>
-              <small>Please, Pay ${price}</small>
+              <small>
+                Amount:{" "}
+                <span className="text-secondary font-bold text-xl">
+                  {" "}
+                  ${price}
+                </span>
+              </small>
             </p>
           </div>
         </div>
-        <div className="mt-10">
-          <h2>Hello {treatmentName}</h2>
+        <div className="md:w-1/2 w-full rounded-lg shadow-2xl mx-auto block p-5 mt-14">
+          <Elements stripe={stripePromise}>
+            <CheckoutForm appointment={appointment} />
+          </Elements>
         </div>
       </div>
     </div>

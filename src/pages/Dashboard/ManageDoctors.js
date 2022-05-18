@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
-import { toast } from "react-toastify";
 import Loading from "../Shared/Loading";
 import DeleteModalConfirm from "./DeleteModalConfirm";
 
@@ -11,7 +10,7 @@ const ManageDoctors = () => {
     isLoading,
     refetch,
   } = useQuery("doctors", () =>
-    fetch("http://localhost:5000/doctor", {
+    fetch("https://boiling-fortress-58648.herokuapp.com/doctor", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -21,7 +20,7 @@ const ManageDoctors = () => {
 
   return (
     <div>
-      <h1>Manage Doctors: {doctors.length}</h1>
+      <h1 className="font-medium">Total Doctors: {doctors.length}</h1>
       <div className="overflow-x-auto m-5">
         <table className="table w-full">
           {/* <!-- head --> */}
