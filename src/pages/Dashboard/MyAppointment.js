@@ -11,7 +11,7 @@ const MyAppointment = () => {
   const [user] = useAuthState(auth);
   useEffect(() => {
     fetch(
-      `https://boiling-fortress-58648.herokuapp.com/booking?email=${user?.email}`,
+      `https://doctors-portal-server-rho.vercel.app/booking?email=${user?.email}`,
       {
         method: "GET",
         headers: {

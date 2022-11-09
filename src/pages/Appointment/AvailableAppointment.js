@@ -14,7 +14,7 @@ const AvailableAppointment = ({ date }) => {
     refetch,
   } = useQuery(["available", formatedDate], () =>
     fetch(
-      `https://boiling-fortress-58648.herokuapp.com/available?date=${formatedDate}`
+      `https://doctors-portal-server-rho.vercel.app/available?date=${formatedDate}`
     ).then((res) => res.json())
   );
   if (isLoading) {

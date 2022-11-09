@@ -7,7 +7,7 @@ import Loading from "../Shared/Loading";
 const AddDoctors = () => {
   const imageStorageKey = "1acbd73a4a8ebea34491d15e22f67080";
   const { data: services, isLoading } = useQuery("user", () =>
-    fetch("https://boiling-fortress-58648.herokuapp.com/services").then((res) =>
+    fetch("https://doctors-portal-server-rho.vercel.app/services").then((res) =>
       res.json()
     )
   );
@@ -39,7 +39,7 @@ const AddDoctors = () => {
           };
           console.log(doctor);
           reset(data);
-          fetch("https://boiling-fortress-58648.herokuapp.com/doctor", {
+          fetch("https://doctors-portal-server-rho.vercel.app/doctor", {
             method: "POST",
             headers: {
               "content-type": "application/json",

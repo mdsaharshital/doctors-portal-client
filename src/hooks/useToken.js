@@ -7,7 +7,7 @@ const useToken = (user) => {
   useEffect(() => {
     if (user?.email) {
       fetch(
-        `https://boiling-fortress-58648.herokuapp.com/user/${user?.email}`,
+        `https://doctors-portal-server-rho.vercel.app/user/${user?.email}`,
         {
           method: "PUT",
           headers: {

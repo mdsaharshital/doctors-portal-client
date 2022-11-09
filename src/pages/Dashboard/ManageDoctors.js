@@ -10,7 +10,7 @@ const ManageDoctors = () => {
     isLoading,
     refetch,
   } = useQuery("doctors", () =>
-    fetch("https://boiling-fortress-58648.herokuapp.com/doctor", {
+    fetch("https://doctors-portal-server-rho.vercel.app/doctor", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },

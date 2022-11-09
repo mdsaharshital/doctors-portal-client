@@ -4,7 +4,7 @@ const useAdmin = (user) => {
   const [admin, setAdmin] = useState(false);
   const [adminLoading, setAdminLoading] = useState(true);
   useEffect(() => {
-    fetch(`https://boiling-fortress-58648.herokuapp.com/admin/${user?.email}`, {
+    fetch(`https://doctors-portal-server-rho.vercel.app/admin/${user?.email}`, {
       method: "get",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

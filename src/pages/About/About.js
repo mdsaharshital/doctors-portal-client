@@ -17,9 +17,9 @@ const About = () => {
         - login and account creation <br />- personalized dashboard <br />- see
         my appointments,dates and pay for it <br />- appoint a slot on available
         date
-        <br />- give review of service after appointment from a admin side:{" "}
-        <br />- can monitor paitents activity <br />- can make one admin <br />-
-        add and manage doctors(delete one) <br />
+        <br />- give review of service after appointment <br />
+        From a admin side: <br />- can monitor paitents activity <br />- can
+        make one admin <br />- add and manage doctors(delete one) <br />
       </p>
       <p className="my-2">
         <span className="font-bold">Upcoming features:</span> <br />-

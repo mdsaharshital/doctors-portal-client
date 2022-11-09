@@ -10,7 +10,7 @@ const stripePromise = loadStripe(`${process.env.REACT_APP_PAYMENT_KEY}`);
 
 const Payment = () => {
   const { id } = useParams();
-  const url = `https://boiling-fortress-58648.herokuapp.com/payment/${id}`;
+  const url = `https://doctors-portal-server-rho.vercel.app/payment/${id}`;
   const { data: appointment, isLoading } = useQuery(["booking", id], () =>
     fetch(url, {
       method: "GET",

@@ -18,7 +18,7 @@ const BookingModal = ({ treatment, date, setTreatment, refetch }) => {
       patientEmail: user.email,
       phone: e.target.number.value,
     };
-    fetch("https://boiling-fortress-58648.herokuapp.com/booking", {
+    fetch("https://doctors-portal-server-rho.vercel.app/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",

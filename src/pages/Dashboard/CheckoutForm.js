@@ -13,7 +13,7 @@ const CheckoutForm = ({ appointment }) => {
 
   useEffect(() => {
     fetch(
-      "https://boiling-fortress-58648.herokuapp.com/create-payment-intent",
+      "https://doctors-portal-server-rho.vercel.app/create-payment-intent",
       {
         method: "POST",
         headers: {
@@ -76,7 +76,7 @@ const CheckoutForm = ({ appointment }) => {
         patientEmail,
         paid: true,
       };
-      fetch(`https://boiling-fortress-58648.herokuapp.com/booking/${_id}`, {
+      fetch(`https://doctors-portal-server-rho.vercel.app/booking/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
