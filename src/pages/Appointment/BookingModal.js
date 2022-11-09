@@ -18,13 +18,16 @@ const BookingModal = ({ treatment, date, setTreatment, refetch }) => {
       patientEmail: user.email,
       phone: e.target.number.value,
     };
-    fetch("https://doctors-portal-server-rho.vercel.app/booking", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(booking),
-    })
+    fetch(
+      "https://doctors-portal-server-bdatfzui1-mdsaharshital.vercel.app/booking",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(booking),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (!data.success) {

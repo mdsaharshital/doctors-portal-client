@@ -4,12 +4,15 @@ const useAdmin = (user) => {
   const [admin, setAdmin] = useState(false);
   const [adminLoading, setAdminLoading] = useState(true);
   useEffect(() => {
-    fetch(`https://doctors-portal-server-rho.vercel.app/admin/${user?.email}`, {
-      method: "get",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://doctors-portal-server-bdatfzui1-mdsaharshital.vercel.app/admin/${user?.email}`,
+      {
+        method: "get",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setAdmin(data.admin);

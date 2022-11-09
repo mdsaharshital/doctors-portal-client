@@ -7,7 +7,7 @@ const useToken = (user) => {
   useEffect(() => {
     if (user?.email) {
       fetch(
-        `https://doctors-portal-server-rho.vercel.app/user/${user?.email}`,
+        `https://doctors-portal-server-bdatfzui1-mdsaharshital.vercel.app/user/${user?.email}`,
         {
           method: "PUT",
           headers: {

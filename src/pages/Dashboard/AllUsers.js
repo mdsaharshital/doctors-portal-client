@@ -10,21 +10,27 @@ const AllUsers = () => {
     isLoading,
     refetch,
   } = useQuery("user", () =>
-    fetch("https://doctors-portal-server-rho.vercel.app/users", {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => res.json())
+    fetch(
+      "https://doctors-portal-server-bdatfzui1-mdsaharshital.vercel.app/users",
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    ).then((res) => res.json())
   );
   console.log(users);
   const handleMakeAdmin = (email) => {
-    fetch(`https://doctors-portal-server-rho.vercel.app/user/admin/${email}`, {
-      method: "PUT",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://doctors-portal-server-bdatfzui1-mdsaharshital.vercel.app/user/admin/${email}`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => {
         console.log(res.status);
         if (res.status === 403) {

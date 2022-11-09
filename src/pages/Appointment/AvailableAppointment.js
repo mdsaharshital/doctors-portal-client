@@ -4,6 +4,8 @@ import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
 import BookingModal from "./BookingModal";
 import Service from "./Service";
+// http://localhost:5000/
+//
 
 const AvailableAppointment = ({ date }) => {
   const formatedDate = format(date, "PP");
@@ -14,7 +16,7 @@ const AvailableAppointment = ({ date }) => {
     refetch,
   } = useQuery(["available", formatedDate], () =>
     fetch(
-      `https://doctors-portal-server-rho.vercel.app/available?date=${formatedDate}`
+      `https://doctors-portal-server-bdatfzui1-mdsaharshital.vercel.app/available?date=${formatedDate}`
     ).then((res) => res.json())
   );
   if (isLoading) {

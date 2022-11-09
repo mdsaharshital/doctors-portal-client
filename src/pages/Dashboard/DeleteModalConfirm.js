@@ -4,12 +4,15 @@ import { toast } from "react-toastify";
 const DeleteModalConfirm = ({ refetch, isModalOpen, setIsModalOpen }) => {
   const { email, name } = isModalOpen;
   const handleDelete = () => {
-    fetch(`https://doctors-portal-server-rho.vercel.app/doctor/${email}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://doctors-portal-server-bdatfzui1-mdsaharshital.vercel.app/doctor/${email}`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

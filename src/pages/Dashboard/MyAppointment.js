@@ -11,7 +11,7 @@ const MyAppointment = () => {
   const [user] = useAuthState(auth);
   useEffect(() => {
     fetch(
-      `https://doctors-portal-server-rho.vercel.app/booking?email=${user?.email}`,
+      `https://doctors-portal-server-bdatfzui1-mdsaharshital.vercel.app/booking?email=${user?.email}`,
       {
         method: "GET",
         headers: {

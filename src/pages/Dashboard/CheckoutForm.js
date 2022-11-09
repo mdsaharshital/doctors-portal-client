@@ -13,7 +13,7 @@ const CheckoutForm = ({ appointment }) => {
 
   useEffect(() => {
     fetch(
-      "https://doctors-portal-server-rho.vercel.app/create-payment-intent",
+      "https://doctors-portal-server-bdatfzui1-mdsaharshital.vercel.app/create-payment-intent",
       {
         method: "POST",
         headers: {
@@ -76,14 +76,17 @@ const CheckoutForm = ({ appointment }) => {
         patientEmail,
         paid: true,
       };
-      fetch(`https://doctors-portal-server-rho.vercel.app/booking/${_id}`, {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify(payment),
-      })
+      fetch(
+        `https://doctors-portal-server-bdatfzui1-mdsaharshital.vercel.app/booking/${_id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify(payment),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
