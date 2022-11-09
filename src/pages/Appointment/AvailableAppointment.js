@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
 import BookingModal from "./BookingModal";
 import Service from "./Service";
-// http://localhost:5000/
+// http://localhost:5000-/
 //
 
 const AvailableAppointment = ({ date }) => {
