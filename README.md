@@ -6,9 +6,13 @@ This website got tons of features like:
 
 - login and account creation
 - personalized dashboard
+- see my appointments,dates and pay for it
 - appoint a slot on available date
-- pay for that slot and get a interview
 - give review of service after appointment
+  from a admin side:
+- can monitor paitents activity
+- can make one admin
+- add and manage doctors(delete one)
 
 Upcoming features:
 

@@ -12,35 +12,34 @@ const Navbar = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/about">About</Link>
-      </li>
-      <li>
         <Link to="/appointment">Appointment</Link>
-      </li>
-      <li>
-        <Link to="/reviews">Reviews</Link>
-      </li>
-      <li>
-        <Link to="/contact">Contact</Link>
       </li>
       {user && (
         <li>
           <Link to="/dashboard">Dashboard</Link>
         </li>
       )}
+      <li>
+        <Link to="/about">About</Link>
+      </li>
+      <li>
+        <Link to="/contact">Contact</Link>
+      </li>
       {user ? (
         <button
           onClick={() => {
             signOut(auth);
             localStorage.removeItem("accessToken");
           }}
-          className="btn btn-ghost"
+          className="btn btn-ghost bg-green-300"
         >
           Logout
         </button>
       ) : (
         <li>
-          <Link to="/login">Login</Link>
+          <Link to="/login" className="bg-green-300">
+            Login
+          </Link>
         </li>
       )}
     </>
