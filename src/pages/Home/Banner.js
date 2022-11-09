@@ -1,5 +1,5 @@
 import React from "react";
-import chair from "../../../src/assets/images/chair.png";
+import heroImg from "../../../src/assets/images/hero-img-2.jpg";
 import bg from "../../../src/assets/images/bg.png";
 import PrimaryBtn from "../../components/PrimaryBtn";
 
@@ -7,12 +7,12 @@ const Banner = () => {
   return (
     <div
       style={{ background: `url(${bg})` }}
-      className="container mx-auto hero min-h-screen"
+      className="container mx-auto hero min-h-[70vh]"
     >
       <div className="hero-content flex-col lg:flex-row-reverse">
         <img
-          src={chair}
-          className="max-w-80 md:max-w-lg rounded-lg shadow-2xl mx-auto block"
+          src={heroImg}
+          className="max-w-80 md:max-w-2xl rounded-lg shadow-xl mx-auto block"
           alt="chairimage"
         />
         <div>
@@ -20,9 +20,7 @@ const Banner = () => {
             Your New Smile Starts Here
           </h1>
           <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+            Dentisty is Great. We give you the most beautiful look in the world.
           </p>
           <PrimaryBtn>Get started</PrimaryBtn>
         </div>

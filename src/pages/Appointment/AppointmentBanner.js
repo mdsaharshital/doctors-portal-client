@@ -1,5 +1,5 @@
 import React from "react";
-import chair from "../../../src/assets/images/chair.png";
+import newBg from "../../../src/assets/images/appointment-cover.jpg";
 import bg from "../../../src/assets/images/bg.png";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
@@ -8,12 +8,12 @@ const AppointmentBanner = ({ date, setDate }) => {
   return (
     <div
       style={{ background: `url(${bg})` }}
-      className="container mx-auto hero min-h-screen"
+      className="container mx-auto hero min-h-[60vh]"
     >
       <div className="hero-content flex-col lg:flex-row-reverse">
         <img
-          src={chair}
-          className="max-w-80 md:max-w-lg rounded-lg shadow-2xl mx-auto block md:ml-12"
+          src={newBg}
+          className="max-w-80 md:max-w-2xl rounded-md shadow-2xl mx-auto block md:ml-12"
           alt="chairimage"
         />
         <div className="mt-10">
@@ -25,7 +25,6 @@ const AppointmentBanner = ({ date, setDate }) => {
             selected={date}
             onSelect={setDate}
           />
-          ;
         </div>
       </div>
     </div>
