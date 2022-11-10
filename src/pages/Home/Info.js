@@ -10,7 +10,7 @@ const Info = () => {
       id: 1,
       img: clock,
       title: "Opening Hour",
-      desc: "Lorem Ipsum is simply dummy text of the price",
+      desc: "From 8 AM to 6 PM",
       bgColor: "bg-gradient-to-r from-secondary to-primary",
     },
     {
@@ -24,7 +24,7 @@ const Info = () => {
       id: 3,
       img: phone,
       title: "Contact Us now",
-      desc: "+8801826635551",
+      desc: "+8801878656582",
       bgColor: "bg-gradient-to-r from-secondary to-primary",
     },
   ];

@@ -7,7 +7,7 @@ const useToken = (user) => {
   useEffect(() => {
     if (user?.email) {
       fetch(
-        `https://doctors-portal-server-pnb2.onrender.com/user/${user?.email}`,
+        `https://doctors-portal-server.up.railway.app/user/${user?.email}`,
         {
           method: "PUT",
           headers: {
