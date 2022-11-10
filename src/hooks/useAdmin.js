@@ -5,7 +5,7 @@ const useAdmin = (user) => {
   const [adminLoading, setAdminLoading] = useState(true);
   useEffect(() => {
     fetch(
-      `https://doctors-portal-server-bdatfzui1-mdsaharshital.vercel.app/admin/${user?.email}`,
+      `https://doctors-portal-server-pnb2.onrender.com/admin/${user?.email}`,
       {
         method: "get",
         headers: {

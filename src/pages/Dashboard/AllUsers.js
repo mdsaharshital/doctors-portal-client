@@ -10,20 +10,17 @@ const AllUsers = () => {
     isLoading,
     refetch,
   } = useQuery("user", () =>
-    fetch(
-      "https://doctors-portal-server-bdatfzui1-mdsaharshital.vercel.app/users",
-      {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    ).then((res) => res.json())
+    fetch("https://doctors-portal-server-pnb2.onrender.com/users", {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
   );
   console.log(users);
   const handleMakeAdmin = (email) => {
     fetch(
-      `https://doctors-portal-server-bdatfzui1-mdsaharshital.vercel.app/user/admin/${email}`,
+      `https://doctors-portal-server-pnb2.onrender.com/user/admin/${email}`,
       {
         method: "PUT",
         headers: {

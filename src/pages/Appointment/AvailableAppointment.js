@@ -16,7 +16,7 @@ const AvailableAppointment = ({ date }) => {
     refetch,
   } = useQuery(["available", formatedDate], () =>
     fetch(
-      `https://doctors-portal-server-bdatfzui1-mdsaharshital.vercel.app/available?date=${formatedDate}`
+      `https://doctors-portal-server-pnb2.onrender.com/available?date=${formatedDate}`
     ).then((res) => res.json())
   );
   if (isLoading) {

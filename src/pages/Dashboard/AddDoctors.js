@@ -7,9 +7,9 @@ import Loading from "../Shared/Loading";
 const AddDoctors = () => {
   const imageStorageKey = "1acbd73a4a8ebea34491d15e22f67080";
   const { data: services, isLoading } = useQuery("user", () =>
-    fetch(
-      "https://doctors-portal-server-bdatfzui1-mdsaharshital.vercel.app/services"
-    ).then((res) => res.json())
+    fetch("https://doctors-portal-server-pnb2.onrender.com/services").then(
+      (res) => res.json()
+    )
   );
   const {
     register,
@@ -39,17 +39,14 @@ const AddDoctors = () => {
           };
           console.log(doctor);
           reset(data);
-          fetch(
-            "https://doctors-portal-server-bdatfzui1-mdsaharshital.vercel.app/doctor",
-            {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-              },
-              body: JSON.stringify(doctor),
-            }
-          )
+          fetch("https://doctors-portal-server-pnb2.onrender.com/doctor", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(doctor),
+          })
             .then((res) => res.json())
             .then((inserted) => {
               if (inserted.success) {

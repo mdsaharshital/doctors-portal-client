@@ -7,7 +7,7 @@ const useToken = (user) => {
   useEffect(() => {
     if (user?.email) {
       fetch(
-        `https://doctors-portal-server-bdatfzui1-mdsaharshital.vercel.app/user/${user?.email}`,
+        `https://doctors-portal-server-pnb2.onrender.com/user/${user?.email}`,
         {
           method: "PUT",
           headers: {
@@ -18,7 +18,6 @@ const useToken = (user) => {
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           localStorage.setItem("accessToken", data.token);
           setToken(data.token);
         });

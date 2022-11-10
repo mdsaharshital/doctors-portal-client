@@ -10,14 +10,11 @@ const ManageDoctors = () => {
     isLoading,
     refetch,
   } = useQuery("doctors", () =>
-    fetch(
-      "https://doctors-portal-server-bdatfzui1-mdsaharshital.vercel.app/doctor",
-      {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }
-    ).then((res) => res.json())
+    fetch("https://doctors-portal-server-pnb2.onrender.com/doctor", {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
   );
   if (isLoading) return <Loading />;
 
