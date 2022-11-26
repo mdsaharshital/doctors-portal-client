@@ -14,6 +14,9 @@ const Navbar = () => {
       <li>
         <Link to="/appointment">Appointment</Link>
       </li>
+      <li>
+        <Link to="/doctors">Doctors</Link>
+      </li>
       {user && (
         <li>
           <Link to="/dashboard">Dashboard</Link>
@@ -31,13 +34,12 @@ const Navbar = () => {
             signOut(auth);
             localStorage.removeItem("accessToken");
           }}
-          className="btn btn-ghost bg-green-300"
         >
           Logout
         </button>
       ) : (
         <li>
-          <Link to="/login" className="bg-green-300">
+          <Link to="/login" className="">
             Login
           </Link>
         </li>
@@ -46,8 +48,8 @@ const Navbar = () => {
   );
   return (
     <>
-      <div className="navbar container mx-auto">
-        <div className="navbar-start">
+      <div className="navbar container mx-auto mt-3">
+        <div className="navbar-start lg:mx-auto">
           <div className="dropdown">
             <label tabIndex="0" className="btn btn-ghost lg:hidden">
               <svg
@@ -72,12 +74,20 @@ const Navbar = () => {
               {menuItems}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-xl">
+          <Link to="/" className="btn btn-ghost normal-case text-2xl">
             Doctors Portal
           </Link>
         </div>
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal p-0">{menuItems}</ul>
+        </div>
+        <div className="navbar-end lg:flex">
+          <h1
+            className="btn btn-sm md:btn-md btn-outline border-none rounded-none px-3 md:px-6 bg-gradient-to-r from-blue-400 to-blue-500  text-white hover:bg-gradient-to-r
+           hover:from-blue-500 hover:to-blue-400 "
+          >
+            Hotline- 09865
+          </h1>
         </div>
       </div>
     </>

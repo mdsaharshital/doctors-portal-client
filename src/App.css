@@ -1,3 +1,6 @@
 :root{
     --rdp-accent-color: #19D3AE !important;
 }
+.navbar-custom-css{
+    justify-content: flex-end !important;
+  }

@@ -16,6 +16,8 @@ import RequireAdmin from "./pages/LoginSignUp/RequireAdmin";
 import AddDoctors from "./pages/Dashboard/AddDoctors";
 import ManageDoctors from "./pages/Dashboard/ManageDoctors";
 import Payment from "./pages/Dashboard/Payment";
+import "./App.css";
+import Doctors from "./pages/doctors/Doctors";
 
 function App() {
   return (
@@ -68,6 +70,7 @@ function App() {
           ></Route>
         </Route>
         <Route path="/about" element={<About />}></Route>
+        <Route path="/doctors" element={<Doctors />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
       </Routes>

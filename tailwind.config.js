@@ -7,15 +7,13 @@ module.exports = {
     themes: [
       {
         doctorsTheme: {
-          primary: "#0FCFEC",
-          secondary: "#19D3AE",
-          accent: "#3A4256",
+          primary: "#3b82f6",
+          secondary: "#60a5fa",
+          accent: "#B3B6B4",
           neutral: "#3d4451",
           "base-100": "#ffffff",
         },
       },
-      "dark",
-      "cupcake",
     ],
   },
   plugins: [require("daisyui")],
