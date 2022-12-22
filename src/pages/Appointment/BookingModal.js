@@ -18,7 +18,7 @@ const BookingModal = ({ treatment, date, setTreatment, refetch }) => {
       patientEmail: user.email,
       phone: e.target.number.value,
     };
-    fetch("https://doctors-portal-server.up.railway.app/booking", {
+    fetch("https://doctors-portal-server-pnb2.onrender.com/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",

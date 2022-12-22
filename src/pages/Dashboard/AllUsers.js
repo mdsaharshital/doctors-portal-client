@@ -10,7 +10,7 @@ const AllUsers = () => {
     isLoading,
     refetch,
   } = useQuery("user", () =>
-    fetch("https://doctors-portal-server.up.railway.app/users", {
+    fetch("https://doctors-portal-server-pnb2.onrender.com/users", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -19,12 +19,15 @@ const AllUsers = () => {
   );
   console.log(users);
   const handleMakeAdmin = (email) => {
-    fetch(`https://doctors-portal-server.up.railway.app/user/admin/${email}`, {
-      method: "PUT",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://doctors-portal-server-pnb2.onrender.com/user/admin/${email}`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => {
         console.log(res.status);
         if (res.status === 403) {

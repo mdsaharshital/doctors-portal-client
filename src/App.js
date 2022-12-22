@@ -21,7 +21,7 @@ import Doctors from "./pages/doctors/Doctors";
 
 function App() {
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="mx-auto">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>

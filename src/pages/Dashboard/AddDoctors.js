@@ -7,8 +7,8 @@ import Loading from "../Shared/Loading";
 const AddDoctors = () => {
   const imageStorageKey = "1acbd73a4a8ebea34491d15e22f67080";
   const { data: services, isLoading } = useQuery("user", () =>
-    fetch("https://doctors-portal-server.up.railway.app/services").then((res) =>
-      res.json()
+    fetch("https://doctors-portal-server-pnb2.onrender.com/services").then(
+      (res) => res.json()
     )
   );
   const {
@@ -39,7 +39,7 @@ const AddDoctors = () => {
           };
           console.log(doctor);
           reset(data);
-          fetch("https://doctors-portal-server.up.railway.app/doctor", {
+          fetch("https://doctors-portal-server-pnb2.onrender.com/doctor", {
             method: "POST",
             headers: {
               "content-type": "application/json",

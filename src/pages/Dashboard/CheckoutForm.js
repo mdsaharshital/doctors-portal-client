@@ -13,7 +13,7 @@ const CheckoutForm = ({ appointment }) => {
 
   useEffect(() => {
     fetch(
-      "https://doctors-portal-server.up.railway.app/create-payment-intent",
+      "https://doctors-portal-server-pnb2.onrender.com/create-payment-intent",
       {
         method: "POST",
         headers: {
@@ -76,7 +76,7 @@ const CheckoutForm = ({ appointment }) => {
         patientEmail,
         paid: true,
       };
-      fetch(`https://doctors-portal-server.up.railway.app/booking/${_id}`, {
+      fetch(`https://doctors-portal-server-pnb2.onrender.com/booking/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

@@ -10,7 +10,7 @@ const ManageDoctors = () => {
     isLoading,
     refetch,
   } = useQuery("doctors", () =>
-    fetch("https://doctors-portal-server.up.railway.app/doctor", {
+    fetch("https://doctors-portal-server-pnb2.onrender.com/doctor", {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
